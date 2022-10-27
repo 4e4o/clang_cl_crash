@@ -15,13 +15,13 @@ public:
     my_awaitable_promise *pp;
 
     my_awaitable() {
-        printf("constexpr my_awaitable() %p\n", this);
+        printf("my_awaitable() %p\n", this);
         g_awaitable_ptr = this;
     }
 
     my_awaitable(my_awaitable_promise* p) noexcept {
         pp = p;
-        printf("my_awaitable(my_awaitable_promise* p) %p\n", this);
+//        printf("my_awaitable(my_awaitable_promise* p) %p\n", this);
     }
 
     my_awaitable(my_awaitable&& other) {
@@ -31,11 +31,11 @@ public:
             printf("GOOOOOOOOOOOOOD!!!! %p %p\n", &other, g_awaitable_ptr);
         }
 
-        printf("my_awaitable(my_awaitable&& other) %p other=%p\n", this, &other);
+//        printf("my_awaitable(my_awaitable&& other) %p other=%p\n", this, &other);
     }
 
     ~my_awaitable() {
-        printf("~my_awaitable() %p\n", this);
+//        printf("~my_awaitable() %p\n", this);
     }
 
     void await_suspend(coroutine_handle<void>) {
@@ -66,11 +66,11 @@ public:
     }
 
     my_awaitable_promise() noexcept {
-        printf("my_awaitable_promise::constr %p\n", this);
+//        printf("my_awaitable_promise::constr %p\n", this);
     }
 
     ~my_awaitable_promise() {
-        printf("~my_awaitable_promise %p\n", this);
+//        printf("~my_awaitable_promise %p\n", this);
     }
 
     void unhandled_exception() {
